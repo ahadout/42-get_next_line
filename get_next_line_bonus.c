@@ -6,7 +6,7 @@
 /*   By: mahadout <mahadout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 18:05:44 by mahadout          #+#    #+#             */
-/*   Updated: 2026/11/07 18:59:14 by mahadout         ###   ########.fr       */
+/*   Updated: 2026/11/08 19:47:44 by mahadout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,6 @@ char	*extract_line(char *buffer)
 	if (buffer[len] == '\n')
 		len++;
 	return (ft_substr(buffer, 0, len));
-}
-
-size_t	guard(char *str, size_t start, size_t len)
-{
-	size_t	count;
-	size_t	strlen;
-
-	strlen = ft_strlen(str);
-	if (start >= strlen)
-		count = 0;
-	else if (len > strlen - start)
-		count = strlen - start;
-	else
-		count = len;
-	return (count);
 }
 
 char	*trim_buffer(char *buffer)

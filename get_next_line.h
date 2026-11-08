@@ -6,7 +6,7 @@
 /*   By: mahadout <mahadout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 18:06:48 by mahadout          #+#    #+#             */
-/*   Updated: 2026/11/07 18:58:14 by mahadout         ###   ########.fr       */
+/*   Updated: 2026/11/08 16:43:47 by mahadout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 
 char	*fill_buffer(int fd, char *buffer);
 char	*extract_line(char *buffer);
-size_t	guard(char *str, size_t start, size_t len);
-char	*ft_substr(char *str, size_t start, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*trim_buffer(char *buffer);
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);

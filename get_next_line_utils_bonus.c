@@ -6,7 +6,7 @@
 /*   By: mahadout <mahadout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 18:05:46 by mahadout          #+#    #+#             */
-/*   Updated: 2026/11/07 18:57:55 by mahadout         ###   ########.fr       */
+/*   Updated: 2026/11/08 17:27:06 by mahadout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,33 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-char	*ft_substr(char *str, size_t start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	count;
-	char	*sub;
 	size_t	i;
+	size_t	sublen;
+	size_t	strlen;
+	char	*pmalloc;
 
-	if (!str)
+	if (!s)
 		return (NULL);
-	count = guard(str, start, len);
-	sub = malloc(count + 1);
-	if (!sub)
+	strlen = ft_strlen(s);
+	if (start >= strlen)
+		sublen = 0;
+	else if (len > strlen - start)
+		sublen = strlen - start;
+	else
+		sublen = len;
+	pmalloc = malloc((sublen + 1) * sizeof(char));
+	if (!pmalloc)
 		return (NULL);
 	i = 0;
-	while (i < count)
+	while (i < sublen)
 	{
-		sub[i] = str[start + i];
+		pmalloc[i] = s[start + i];
 		i++;
 	}
-	sub[i] = '\0';
-	return (sub);
+	pmalloc[i] = '\0';
+	return (pmalloc);
 }
 
 char	*grow_buffer(char *buffer, size_t len, size_t *cap)
