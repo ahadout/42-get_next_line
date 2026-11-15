@@ -6,7 +6,7 @@
 /*   By: mahadout <mahadout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:17:35 by mahadout          #+#    #+#             */
-/*   Updated: 2026/11/08 16:44:01 by mahadout         ###   ########.fr       */
+/*   Updated: 2026/11/15 18:48:55 by mahadout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,17 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = fill_buffer(fd, buffer);
 	if (!buffer || !*buffer)
-	{
-		free(buffer);
-		buffer = NULL;
-		return (NULL);
-	}
+		return (free(buffer), buffer = NULL, NULL);
 	line = extract_line(buffer);
 	if (!line)
 		return (NULL);
 	buffer = trim_buffer(buffer);
+	if (!buffer)
+		return (NULL);
+	if (!*buffer)
+	{
+		free(buffer);
+		buffer = NULL;
+	}
 	return (line);
 }
